@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  WeatherApp
+//
+//  Created by MOHAMED REBIN K on 04/03/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+OpenWeather_API_KEY = ce7ee59ffb7ce569926c7c56effbe488
