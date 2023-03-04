@@ -15,13 +15,17 @@ struct WeatherResponse: Codable {
     let visibility: Int?
     let wind: Wind?
     let clouds: Clouds?
-    let dt: Int?
+    let dt: TimeInterval?
     let sys: Sys?
     let timezone: Int?
     let id: Int?
     let name: String?
     let cod: Int?
     let message: String?
+    
+    var date: Date {
+        return Date(timeIntervalSince1970: dt ?? TimeInterval())
+    }
 }
 
 struct Coord: Codable {

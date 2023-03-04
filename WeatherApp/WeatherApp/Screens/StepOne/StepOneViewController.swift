@@ -19,6 +19,8 @@ class StepOneViewController: UIViewController {
         self.searchBar.delegate = self
         self.weatherTableView.delegate = self
         self.weatherTableView.dataSource = self
+        self.searchBar.placeholder = "Please enter cities name (comma Separated)"
+        self.searchBar.searchTextField.font = .systemFont(ofSize: 15)
         
         // Register the custom cell XIB file
         let nib = UINib(nibName: "WeatherTableViewCell", bundle: nil)
@@ -53,7 +55,7 @@ extension StepOneViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension StepOneViewController: StepOneViewModelProtocol {
+extension StepOneViewController: StepOneViewModelDelegate {
     func reloadData() {
         DispatchQueue.main.async {
             self.weatherTableView.reloadData()

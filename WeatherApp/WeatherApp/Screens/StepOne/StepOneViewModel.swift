@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol StepOneViewModelProtocol: AnyObject{
+protocol StepOneViewModelDelegate: AnyObject{
     func reloadData()
 }
 
 class StepOneViewModel {
-    weak var delegate: StepOneViewModelProtocol?
+    weak var delegate: StepOneViewModelDelegate?
     
     var weatherData: [WeatherResponse] = [] {
         didSet{

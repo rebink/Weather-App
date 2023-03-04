@@ -35,6 +35,11 @@
 		734A56A929B38B91002F8A90 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734A56A729B38B91002F8A90 /* WeatherTableViewCell.xib */; };
 		734A56AC29B38D46002F8A90 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 734A56AB29B38D46002F8A90 /* Kingfisher */; };
 		734A56AE29B38D5A002F8A90 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A56AD29B38D5A002F8A90 /* UIImageView+Extension.swift */; };
+		734A56B129B39993002F8A90 /* StepTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A56AF29B39993002F8A90 /* StepTwoViewController.swift */; };
+		734A56B229B39993002F8A90 /* StepTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 734A56B029B39993002F8A90 /* StepTwoViewController.xib */; };
+		734A56B429B3A0E3002F8A90 /* StepTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A56B329B3A0E3002F8A90 /* StepTwoViewModel.swift */; };
+		734A56B629B3A8AE002F8A90 /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A56B529B3A8AE002F8A90 /* ForecastResponse.swift */; };
+		734A56B829B3BD77002F8A90 /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A56B729B3BD77002F8A90 /* CoreDataUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,11 @@
 		734A56A629B38B91002F8A90 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		734A56A729B38B91002F8A90 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		734A56AD29B38D5A002F8A90 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		734A56AF29B39993002F8A90 /* StepTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoViewController.swift; sourceTree = "<group>"; };
+		734A56B029B39993002F8A90 /* StepTwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepTwoViewController.xib; sourceTree = "<group>"; };
+		734A56B329B3A0E3002F8A90 /* StepTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoViewModel.swift; sourceTree = "<group>"; };
+		734A56B529B3A8AE002F8A90 /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
+		734A56B729B3BD77002F8A90 /* CoreDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +214,9 @@
 		734A567729B327FC002F8A90 /* StepTwo */ = {
 			isa = PBXGroup;
 			children = (
+				734A56B329B3A0E3002F8A90 /* StepTwoViewModel.swift */,
+				734A56AF29B39993002F8A90 /* StepTwoViewController.swift */,
+				734A56B029B39993002F8A90 /* StepTwoViewController.xib */,
 			);
 			path = StepTwo;
 			sourceTree = "<group>";
@@ -264,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				734A569B29B34D5A002F8A90 /* WeatherResponse.swift */,
+				734A56B529B3A8AE002F8A90 /* ForecastResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +287,7 @@
 			children = (
 				734A568629B32F1A002F8A90 /* weather-icon.json */,
 				734A569F29B36D72002F8A90 /* AppUtils.swift */,
+				734A56B729B3BD77002F8A90 /* CoreDataUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -413,6 +428,7 @@
 				734A565129B32794002F8A90 /* LaunchScreen.storyboard in Resources */,
 				734A569229B34169002F8A90 /* StepOneViewController.xib in Resources */,
 				734A564E29B32794002F8A90 /* Assets.xcassets in Resources */,
+				734A56B229B39993002F8A90 /* StepTwoViewController.xib in Resources */,
 				734A564929B32793002F8A90 /* Main.storyboard in Resources */,
 				734A56A929B38B91002F8A90 /* WeatherTableViewCell.xib in Resources */,
 				734A568729B32F1A002F8A90 /* weather-icon.json in Resources */,
@@ -442,6 +458,7 @@
 			files = (
 				734A569929B3480F002F8A90 /* API.swift in Sources */,
 				734A569529B341B8002F8A90 /* UIViewController+Extension.swift in Sources */,
+				734A56B429B3A0E3002F8A90 /* StepTwoViewModel.swift in Sources */,
 				734A56A829B38B91002F8A90 /* WeatherTableViewCell.swift in Sources */,
 				734A564C29B32793002F8A90 /* WeatherApp.xcdatamodeld in Sources */,
 				734A569729B34800002F8A90 /* NetworkManager.swift in Sources */,
@@ -451,10 +468,13 @@
 				734A56A029B36D72002F8A90 /* AppUtils.swift in Sources */,
 				734A569C29B34D5A002F8A90 /* WeatherResponse.swift in Sources */,
 				734A568529B32E14002F8A90 /* LottieHUD.swift in Sources */,
+				734A56B129B39993002F8A90 /* StepTwoViewController.swift in Sources */,
 				734A567929B3282A002F8A90 /* HomeViewModel.swift in Sources */,
 				734A56AE29B38D5A002F8A90 /* UIImageView+Extension.swift in Sources */,
+				734A56B829B3BD77002F8A90 /* CoreDataUtils.swift in Sources */,
 				734A564429B32793002F8A90 /* SceneDelegate.swift in Sources */,
 				734A567B29B3283C002F8A90 /* HomeViewController.swift in Sources */,
+				734A56B629B3A8AE002F8A90 /* ForecastResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +655,7 @@
 				DEVELOPMENT_TEAM = ZA3WQ3B8Y2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to get current location of the user in order to show the weather ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -664,6 +685,7 @@
 				DEVELOPMENT_TEAM = ZA3WQ3B8Y2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to get current location of the user in order to show the weather ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

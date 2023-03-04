@@ -29,10 +29,10 @@ class WeatherTableViewCell: UITableViewCell {
     }
     
     func getAttributedStringFor(title: String, value: String) -> NSMutableAttributedString{
-        let titleAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold)]
+        let titleAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)]
         let titleString = NSMutableAttributedString(string: title, attributes: titleAttribute)
         
-        let valueAttribute = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+        let valueAttribute = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
         let valueString = NSAttributedString(string: value, attributes: valueAttribute)
         titleString.append(valueString)
         return titleString

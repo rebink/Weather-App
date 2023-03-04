@@ -15,10 +15,13 @@ class HomeViewController: UIViewController {
     
 
     @IBAction func onTapStep1Button(_ sender: Any) {
-        pushViewControllerWithXib(StepOneViewController.self)
+        let vc = getViewControllerWithXib(StepOneViewController.self)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func onTapStep2Button(_ sender: Any) {
+        let vc = getViewControllerWithXib(StepTwoViewController.self)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

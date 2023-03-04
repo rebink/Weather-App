@@ -16,6 +16,7 @@ protocol Networkable {
 
     //Custom API's
     func getCurrentWeatherForCities(cities: [String]) async throws -> [WeatherResponse?]
+    func getForecast(lat: String,long:String) async throws -> ForecastResponse?
 }
 
 class NetworkManager: Networkable {
@@ -36,6 +37,10 @@ class NetworkManager: Networkable {
             }
             return responses
         }
+    }
+    
+    func getForecast(lat: String,long:String) async throws -> ForecastResponse?{
+        return try? await request(ForecastResponse?.self, target: API.getForecast(lat: lat, long: long))
     }
 }
 
