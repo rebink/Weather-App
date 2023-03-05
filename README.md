@@ -18,7 +18,17 @@ The app uses the OpenWeatherMap API to fetch the weather information for cities 
 - Open the WeatherApp.xcodeproj file in Xcode.
 - Wait for Swift packages to install.
 - Build and run the app on a simulator or a physical device.
-
+## How to Run Tests
+- Open the WeatherApp.xcodeproj file in Xcode.
+- Go to Product -> Test or use the shortcut Cmd + U.
+- The tests will run, and the results will be shown in the Xcode console.
+## How to Generate Code Coverage Report
+- Open the WeatherApp.xcodeproj file in Xcode.
+- Go to Product -> Scheme -> Edit Scheme or use the shortcut Cmd + Shift + ,.
+- Select Test from the left panel and check the box next to "Gather coverage data".
+- Go to Product -> Test or use the shortcut Cmd + U.
+- After the tests are completed, go to Report Navigator.
+- Select Coverage tab and you will see the code coverage report.
 
 
 
