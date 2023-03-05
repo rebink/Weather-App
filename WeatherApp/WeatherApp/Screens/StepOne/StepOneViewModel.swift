@@ -48,7 +48,7 @@ class StepOneViewModel {
         }
     }
     
-    private func validateUserEnteredCities(_ citiesCount: Int) -> Bool{
+    func validateUserEnteredCities(_ citiesCount: Int) -> Bool{
         //Validation conditions
         let minCitiesCount = 3
         let maxCitiesCount = 7
