@@ -3,9 +3,20 @@
     <entity name="CurrentWeather" representedClassName="CurrentWeather" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="maxTemp" optional="YES" attributeType="String"/>
         <attribute name="minTemp" optional="YES" attributeType="String"/>
         <attribute name="weatherDescription" optional="YES" attributeType="String"/>
+        <attribute name="windSpeed" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Forecast" representedClassName="Forecast" syncable="YES" codeGenerationType="class">
+        <attribute name="cityName" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="maxTemp" optional="YES" attributeType="String"/>
+        <attribute name="minTemp" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="weather" optional="YES" attributeType="String"/>
         <attribute name="windSpeed" optional="YES" attributeType="String"/>
     </entity>
 </model>

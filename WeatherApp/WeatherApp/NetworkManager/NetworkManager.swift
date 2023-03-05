@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import Alamofire
 
 
 protocol Networkable {
@@ -19,12 +20,21 @@ protocol Networkable {
     func getForecast(lat: String,long:String) async throws -> ForecastResponse?
 }
 
+enum NetworkError: Error {
+    case noInternetConnection
+    case requestFailed
+}
+
 class NetworkManager: Networkable {
     let provider = MoyaProvider<API>(plugins: [NetworkLoggerPlugin()])
     static let shared = NetworkManager()
     private init() {}
+    let internetStatus = NetworkReachabilityManager()
     
     func getCurrentWeatherForCities(cities: [String]) async throws -> [WeatherResponse?]{
+        guard let status = internetStatus,status.isReachable else {
+            throw NetworkError.noInternetConnection
+        }
         return await withTaskGroup(of: WeatherResponse?.self,returning: [WeatherResponse?].self) { group in
             for city in cities {
                 group.addTask {
@@ -40,7 +50,14 @@ class NetworkManager: Networkable {
     }
     
     func getForecast(lat: String,long:String) async throws -> ForecastResponse?{
-        return try? await request(ForecastResponse?.self, target: API.getForecast(lat: lat, long: long))
+        guard let status = internetStatus,status.isReachable else {
+            throw NetworkError.noInternetConnection
+        }
+        do{
+            return try await request(ForecastResponse?.self, target: API.getForecast(lat: lat, long: long))
+        }catch{
+            throw error
+        }
     }
 }
 

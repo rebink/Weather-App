@@ -17,8 +17,9 @@ class StepTwoViewModel: NSObject{
     let locationManager = CLLocationManager()
     var delegate: StepTwoViewModelDelegate?
     
-    var weatherData: [[ForecastResponse.ForecastData]] = []{
+    var weatherData: [[Forecast]] = []{
         didSet{
+            cityName = weatherData.first?.first?.cityName ?? "NA"
             delegate?.reloadData()
         }
     }
@@ -44,9 +45,22 @@ class StepTwoViewModel: NSObject{
             do{
                 let forecastDetails = try await NetworkManager.shared.getForecast(lat: lat, long: long)
                 self.cityName = forecastDetails?.city?.name ?? ""
-                self.weatherData = forecastDetails?.sortedListByDay ?? []
+                self.weatherData = await CoreDataUtils.shared.saveAllWeatherForecast(forecastModel: forecastDetails?.sortedListByDay ?? [], city: self.cityName)?.compactMap{$0.compactMap{$0}} ?? []
             } catch {
                 AppUtils.showErrorSnackbar(message: "API Call failed")
+                Task{
+                    do{
+                        let currentWeather = try await CoreDataUtils.shared.getAllForecast()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        let grouped = Dictionary(grouping: currentWeather ) { dateFormatter.string(from: $0.date ?? Date()) }
+                        let sortedKeys = grouped.keys.sorted()
+                        let soretedDate = sortedKeys.compactMap { grouped[$0] }
+                        self.weatherData = soretedDate
+                    }catch {
+                        debugPrint(error.localizedDescription)
+                    }
+                }
                 debugPrint(error.localizedDescription)
             }
         }

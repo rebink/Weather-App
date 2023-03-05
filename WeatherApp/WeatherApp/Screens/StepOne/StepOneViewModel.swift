@@ -14,7 +14,7 @@ protocol StepOneViewModelDelegate: AnyObject{
 class StepOneViewModel {
     weak var delegate: StepOneViewModelDelegate?
     
-    var weatherData: [WeatherResponse] = [] {
+    var weatherData: [CurrentWeather] = [] {
         didSet{
             delegate?.reloadData()
         }
@@ -29,9 +29,19 @@ class StepOneViewModel {
             if validateUserEnteredCities(stringArray.count){
                 do{
                     let weatherDetails = try await NetworkManager.shared.getCurrentWeatherForCities(cities: stringArray)
-                    self.weatherData = weatherDetails.compactMap { $0 }
+                    Task{
+                        self.weatherData = (try? await CoreDataUtils.shared.saveAllCityWeather(weatherModel: weatherDetails.compactMap{$0})?.compactMap{$0}) ?? []
+                    }
                 } catch {
-                    AppUtils.showErrorSnackbar(message: "API Call failed")
+                    AppUtils.showErrorSnackbar(message: "API Call failed. Checking if data available in cache")
+                    Task{
+                        do{
+                            let currentWeather = try await CoreDataUtils.shared.getAllCityWeatherWith(cities:stringArray)
+                            self.weatherData = currentWeather
+                        }catch {
+                            debugPrint(error.localizedDescription)
+                        }
+                    }
                     debugPrint(error.localizedDescription)
                 }
             }

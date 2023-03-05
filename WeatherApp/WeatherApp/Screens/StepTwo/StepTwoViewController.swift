@@ -75,11 +75,11 @@ extension StepTwoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as! WeatherTableViewCell
         let data = viewModel.weatherData[indexPath.section][indexPath.row]
-        cell.weatherIcon.loadImage(with: AppUtils.shared.getWeatherIconUrlFromWeatherIconCode(code: data.weather?.first?.icon ?? ""))
-        cell.temperature.attributedText = cell.getAttributedStringFor(title: "Temperature: ", value: "\(data.main?.temp_min ?? 0)°C - \(data.main?.temp_max ?? 0)°C")
-        cell.weatherDescription.attributedText = cell.getAttributedStringFor(title: "Weather: ", value: "\(data.weather?.first?.description ?? "")")
-        cell.windSpeed.attributedText = cell.getAttributedStringFor(title: "Wind Speed: ", value: "\(data.wind?.speed ?? 0)m/s")
-        let date = data.date // The current date and time
+        cell.weatherIcon.loadImage(with: AppUtils.shared.getWeatherIconUrlFromWeatherIconCode(code: data.icon ?? ""))
+        cell.temperature.attributedText = cell.getAttributedStringFor(title: "Temperature: ", value: "\(data.minTemp ?? "NA")°C - \(data.maxTemp ?? "NA")°C")
+        cell.weatherDescription.attributedText = cell.getAttributedStringFor(title: "Weather: ", value: "\(data.weather ?? "")")
+        cell.windSpeed.attributedText = cell.getAttributedStringFor(title: "Wind Speed: ", value: "\(data.windSpeed ?? "NA")m/s")
+        let date = data.date ?? Date() // The current date and time
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a" // Set the date formatter to display the time in "hour:minute AM/PM" format
         let timeString = dateFormatter.string(from: date) // Convert the date to a string in the specified format

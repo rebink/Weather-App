@@ -45,11 +45,11 @@ extension StepOneViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as! WeatherTableViewCell
         let data = viewModel.weatherData[indexPath.row]
-        cell.weatherIcon.loadImage(with: AppUtils.shared.getWeatherIconUrlFromWeatherIconCode(code: data.weather?.first?.icon ?? ""))
-        cell.temperature.attributedText = cell.getAttributedStringFor(title: "Temperature: ", value: "\(data.main?.temp_min ?? 0)°C - \(data.main?.temp_max ?? 0)°C")
-        cell.weatherDescription.attributedText = cell.getAttributedStringFor(title: "Weather: ", value: "\(data.weather?.first?.description ?? "")")
-        cell.windSpeed.attributedText = cell.getAttributedStringFor(title: "Wind Speed: ", value: "\(data.wind?.speed ?? 0)m/s")
-        cell.city.text = data.name ?? ""
+        cell.weatherIcon.loadImage(with: AppUtils.shared.getWeatherIconUrlFromWeatherIconCode(code: data.icon ?? ""))
+        cell.temperature.attributedText = cell.getAttributedStringFor(title: "Temperature: ", value: "\(data.minTemp ?? "NA")°C - \(data.maxTemp ?? "NA")°C")
+        cell.weatherDescription.attributedText = cell.getAttributedStringFor(title: "Weather: ", value: "\(data.weatherDescription ?? "")")
+        cell.windSpeed.attributedText = cell.getAttributedStringFor(title: "Wind Speed: ", value: "\(data.windSpeed ?? "NA")m/s")
+        cell.city.text = data.cityName ?? ""
         cell.selectionStyle = .none
         return cell
     }
